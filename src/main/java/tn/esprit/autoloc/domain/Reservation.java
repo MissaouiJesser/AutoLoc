@@ -1,8 +1,10 @@
-package tn.esprit.autoloc.entities;
+package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
-import tn.esprit.autoloc.entities.enums.StatutReservation;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -12,17 +14,28 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@ToString
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReservation;
 
+    @Column(nullable = false)
     private LocalDate dateDebut;
+
+    @Column(nullable = false)
     private LocalDate dateFin;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
     private StatutReservation statut;
+
+    @ManyToOne
+    private Vehicule vehicule;
+
+    @ManyToOne
+    private Client client;
+
+    @OneToOne(mappedBy = "reservation")
+    private Contrat contrat;
 }
