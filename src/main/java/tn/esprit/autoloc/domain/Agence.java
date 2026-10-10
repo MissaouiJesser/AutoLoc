@@ -32,9 +32,9 @@ public class Agence {
     @Column(nullable = false, length = 20)
     private String telephone;
 
-    @OneToMany(mappedBy = "agence")
+    @OneToMany(mappedBy = "agence", cascade = CascadeType.PERSIST)
     private Set<Employe> employes;
 
-    @OneToMany(mappedBy = "agence")
+    @OneToMany(mappedBy = "agence", cascade = CascadeType.PERSIST)
     private Set<Vehicule> vehicules;
 }

@@ -23,7 +23,6 @@ public class Equipement {
     @Column(nullable = false, length = 100)
     private String libelle;
 
-
-    @ManyToMany(mappedBy = "equipements")
+    @ManyToMany(mappedBy = "equipements", cascade = CascadeType.PERSIST)
     private Set<Vehicule> vehicules;
 }

@@ -34,6 +34,6 @@ public class Contrat {
     @OneToOne
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "contrat")
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.PERSIST)
     private Set<Paiement> paiements;
 }

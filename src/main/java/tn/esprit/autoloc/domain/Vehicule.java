@@ -48,7 +48,7 @@ public class Vehicule {
     @ManyToMany
     private Set<Equipement> equipements;
 
-    @OneToMany(mappedBy = "vehicule")
+    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.PERSIST)
     private Set<Reservation> reservations;
 
 }
